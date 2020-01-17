@@ -25,6 +25,7 @@ class RSWS extends EventEmitter {
     this.ws = null
 
     this.transport = opts.transport
+    this.cleanup = () => {}
 
     this._state = 'disconnected'
     this._firstConnect = null
@@ -98,6 +99,7 @@ class RSWS extends EventEmitter {
 
   stop () {
     this.backoff.reset()
+    this.cleanup(this.ws)
     this._destroySocket()
     this.state = 'disconnected'
     this.emit('disconnect')
