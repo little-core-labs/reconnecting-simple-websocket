@@ -1,6 +1,5 @@
 const { EventEmitter } = require('events')
 const backoff = require('backoff')
-const get = require('lodash.get')
 const Socket = require('simple-websocket')
 
 class RSWS extends EventEmitter {
@@ -53,6 +52,7 @@ class RSWS extends EventEmitter {
   get state () {
     return this._state
   }
+
   set state (state) {
     this._state = state
     this.emit('state', state)
@@ -105,14 +105,13 @@ class RSWS extends EventEmitter {
     this.emit('disconnect')
   }
 
-
-  _addEventListeners(target) {
+  _addEventListeners (target) {
     target.on('connect', this.onconnect)
     target.on('close', this.onclose)
     target.on('error', this.onerror)
   }
 
-  _removeEventListeners(target) {
+  _removeEventListeners (target) {
     target.removeListener('connect', this.onconnect)
     target.removeListener('close', this.onclose)
     target.removeListener('error', this.onerror)
@@ -132,6 +131,7 @@ class RSWS extends EventEmitter {
   onclose () {
     this._info('RSWS: socket closed')
     this.state = 'disconnected'
+    this.emit('disconnect')
     this.backoff.backoff()
   }
 
@@ -144,4 +144,4 @@ class RSWS extends EventEmitter {
   }
 }
 
-module.exports = URWS
+module.exports = RSWS
