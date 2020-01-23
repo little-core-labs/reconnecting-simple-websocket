@@ -1,4 +1,4 @@
-const RSWS = require('../.')
+const RSWS = require('../../.')
 
 const rsws = new RSWS('ws://localhost:8085', {
   onopen (socket, firstOpen) {
