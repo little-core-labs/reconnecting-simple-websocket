@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Bret Comnes <bcomnes@gmail.com> (https://bret.io)",
   "bugs": {
-    "url": "https://github.com/bcomnes/reconnecting-simple-websocket/issues"
+    "url": "https://github.com/little-core-labs/reconnecting-simple-websocket/issues"
   },
   "dependencies": {
     "nanoassert": "^2.0.0",
@@ -21,13 +21,13 @@
     "tap": "^14.10.2",
     "ws": "^7.2.1"
   },
-  "homepage": "https://github.com/bcomnes/reconnecting-simple-websocket",
+  "homepage": "https://github.com/little-core-labs/reconnecting-simple-websocket",
   "keywords": [],
   "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bcomnes/reconnecting-simple-websocket.git"
+    "url": "https://github.com/little-core-labs/reconnecting-simple-websocket.git"
   },
   "scripts": {
     "test": "run-s test:*",
