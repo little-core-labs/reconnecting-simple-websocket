@@ -7,12 +7,11 @@
     "url": "https://github.com/bcomnes/reconnecting-simple-websocket/issues"
   },
   "dependencies": {
-    "nanoassert": "^2.0.0",
     "reconnecting-socket": "^1.0.0",
-    "rpc-protocol": "^0.2.3",
     "simple-websocket": "^8.1.1"
   },
   "devDependencies": {
+    "rpc-protocol": "^0.2.3",
     "backoff": "^2.5.0",
     "dependency-check": "^4.1.0",
     "lodash.get": "^4.4.2",
