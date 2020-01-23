@@ -138,7 +138,7 @@ This method is called when the reconnectignSocket fails to connect after `failAf
 
 - [reconnecting-socket][rs]
 - [simple-websocket][sws]
-- [ws][https://github.com/websockets/ws]
+- [ws](https://github.com/websockets/ws)
 
 ## License
 
