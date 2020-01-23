@@ -1,44 +1,28 @@
 const RSWS = require('../.')
-const protocol = require('rpc-protocol')
 
-const rsws = new RSWS('ws://localhost:8085')
+const rsws = new RSWS('ws://localhost:8085', {
+  onopen (socket, firstOpen) {
+    // What gets called wheny you have a live socket
+    console.log('onopen')
+    this.pinger = setInterval(() => socket.write('ping'), 1000)
+    socket.on('data', buf => console.log(buf.toString('utf8')))
+  },
+
+  onclose (socket) {
+    // what to do when the socket is closed
+    console.log('onclose')
+    clearInterval(this.pinger)
+  },
+
+  onfail (err) {
+    // handle the final error that caused the fail
+    console.log('onfail')
+    console.error(err)
+  }
+})
 
 rsws.on('state', (st) => console.log(`state: ${st}`))
 rsws.on('info', (st) => console.log(`info: ${st}`))
 rsws.on('error', (err) => console.error(`error: ${err}`))
 
-let pinger
-
-function onConnect (socket) {
-  const rpc = protocol({ stream: socket })
-
-  rpc.call('echo', 'hello world', (err, res) => {
-    if (err) return console.error(err)
-    console.log(res) // [ 'hello world' ]
-  })
-
-  function receivePong (err, res) {
-    if (err) console.error(err)
-    console.log(res)
-  }
-
-  pinger = setInterval(() => {
-    console.log('ping')
-    rpc.call('ping', null, receivePong)
-  }, 1000)
-}
-
-rsws.on('connect', onConnect)
-
-rsws.on('reconnect', onConnect)
-
-rsws.on('disconnect', (socket) => {
-  window.socket = null
-  clearInterval(pinger)
-})
-
-rsws.start()
-
-window.onbeforeunload = function () {
-  rsws.stop()
-}
+rsws.start() // start it
