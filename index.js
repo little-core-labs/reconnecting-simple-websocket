@@ -1,9 +1,11 @@
 const Socket = require('simple-websocket')
 const ReconnectingSocket = require('reconnecting-socket')
+const assert = require('nanoassert')
 
 class RSWS extends ReconnectingSocket {
   constructor (url, opts) {
-    if (!url) throw new Error('RSWS: missing url argument')
+    assert(url, 'URL parameter is included')
+    assert(typeof url === 'string', 'URL parameter is a string')
 
     super(opts)
 

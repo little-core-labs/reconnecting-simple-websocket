@@ -2,6 +2,13 @@ const tap = require('tap')
 const RSWS = require('./index')
 const Server = require('simple-websocket/server')
 
+tap.test('argument assertions', async t => {
+  t.throws(() => {
+    var a = new RSWS()
+    a.stop()
+  }, 'URL parameter is a string')
+})
+
 tap.test('yolo hook it all up test', t => {
   t.plan(16)
   const port = 8456
