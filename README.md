@@ -1,5 +1,5 @@
 # reconnecting-simple-websocket
-[![Actions Status](https://github.com/little-core-labs/reconnecting-simple-websocket/workflows/tests/badge.svg)](https://github.com/bcomnes/reconnecting-simple-websocket/actions)
+[![Actions Status](https://github.com/little-core-labs/reconnecting-simple-websocket/workflows/tests/badge.svg)](https://github.com/little-core-labs/reconnecting-simple-websocket/actions)
 
 State machine for reconnecting [simple-websocket][sws]s.  Subclass of [reconnecting-socket][rs].
 
