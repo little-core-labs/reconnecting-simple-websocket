@@ -10,7 +10,7 @@ tap.test('argument assertions', async t => {
 })
 
 tap.test('yolo hook it all up test', t => {
-  t.plan(16)
+  t.plan(9)
   const port = 8456
   const connections = []
   let server = new Server({ port: port })
@@ -82,9 +82,6 @@ tap.test('yolo hook it all up test', t => {
   })
 
   reconnectingWS.on('info', console.log)
-  reconnectingWS.on('error', err => {
-    t.equals(err.message, 'connection error to ws://localhost:8456')
-  })
 
   server.on('listening', () => {
     reconnectingWS.start()
