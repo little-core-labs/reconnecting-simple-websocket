@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "nanoassert": "^2.0.0",
-    "reconnecting-socket": "^2.0.0",
+    "reconnecting-socket": "^2.0.1",
     "simple-websocket": "^8.1.1"
   },
   "devDependencies": {
